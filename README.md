@@ -1,1 +1,1 @@
-Tai programėlė lifto montuotojams
+Tai programėlė lifto montuotojams.
