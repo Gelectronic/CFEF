@@ -1,1 +1,1 @@
-labas pasauli
+Tai programėlė lifto montuotojams
