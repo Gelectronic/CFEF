@@ -1,0 +1,104 @@
+<HomeScreen>:
+    NavigationLayout:
+        ScreenManager:
+            Screen:
+                BoxLayout:
+                    orientation: 'vertical'
+                    MDToolbar:
+                        title: "Pick It Up"
+                        elevation: 10
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
+
+                    Widget:
+    
+                GridLayout:
+                    cols: 1
+                    padding: 20, 20
+                    spacing: 10,10
+                    size_hint: 1,0.87
+                    MDRectangleFlatIconButton:
+                        id: packageweight_button
+                        icon: 'weight-kilogram'
+                        text: "Package weight"
+                        size_hint: (1,1)
+                        on_release: root.weightdrop()                     
+                    MDRectangleFlatIconButton:
+                        id: packagesize_button
+                        icon: 'move-resize'
+                        text: "Package Size"
+                        size_hint: (1,1)
+                        on_press: root.sizedrop()
+                    MDRectangleFlatIconButton:
+                        id: packagetype_button
+                        icon: 'format-list-bulleted-type'
+                        text: "Package Type"
+                        size_hint: (1,1)
+                        on_press: root.typedrop()
+                    MDRectangleFlatIconButton:
+                        icon: 'map-marker'
+                        text: "Pickup and Drop Lacations"
+                        size_hint: (1,1)
+                        on_press: root.pickup_drop_loc()
+                    MDLabel:
+                        id: packageweight
+                        text: ""
+                    MDLabel:
+                        id: packagesize
+                        text: ""
+                    MDLabel:
+                        id: packagetype
+                        text: ""
+                    MDLabel:
+                        id: pickuploc
+                        text: ""
+                    MDLabel:
+                        id: droploc
+                        text: ""
+                    RelativeLayout:
+                        MDFillRoundFlatIconButton:
+                            icon: 'cash-usd'
+                            text: "Check total amount"
+                            text_color: 1,1,1,1
+                            size_hint: (1,1)
+                            on_press: root.total_amount()
+        MDNavigationDrawer:
+            id: nav_drawer
+            BoxLayout:
+                orientation: 'vertical'
+                padding: 20,20
+                spacing: 30,30
+                Image:
+                    source: 'male-avatar-profile-picture-vector-10211761.jpg'
+                MDLabel:
+                    text:"User-Name"
+                    font_style: 'H6'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                MDLabel:
+                    text: "User-email-id"
+                    
+                    font_style: 'Caption'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                ScrollView:
+                    MDList:
+                        OneLineIconListItem:
+                            text: "Profile"
+                            IconLeftWidget:
+                                icon: 'face-profile'
+                        OneLineIconListItem:
+                            text: "Previous orders"
+                            IconLeftWidget:
+                                icon: 'page-previous-outline'
+                        OneLineIconListItem:
+                            text: "Logout"
+                            on_press:                                 
+                                root.logout()
+                                nav_drawer.set_state("close")
+                            IconLeftWidget:
+                                icon: 'logout'
+    
+
+<RootWidget>:
+    HomeScreen:
+        name: "home_screen"   
